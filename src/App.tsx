@@ -2,6 +2,7 @@ import React, {useState} from 'react';
 import './App.css';
 import PlayerCard from "./components/PlayerCard";
 import {PlayerModel} from "./model/player.model";
+import SearchBar from "./components/SearchBar";
 
 const allPlayers = [
   {
@@ -57,9 +58,9 @@ const allPlayers = [
 function App() {
   const [ players, setPlayers ] = useState<PlayerModel[]>(allPlayers)
   return (
-    <div className="flex w-full h-full">
-      <header className="">
-
+    <div className="flex flex-col w-full h-full">
+      <header className="p-10">
+        <SearchBar />
       </header>
       <main className="flex flex-row flex-wrap w-full justify-center md:justify-start pl-0 md:pl-10 pt-10">
         { players.map(player => <PlayerCard key={player.pictureURl} player={player} />) }
