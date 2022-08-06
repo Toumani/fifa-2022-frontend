@@ -3,6 +3,7 @@ import './App.css';
 import PlayerCard from "./components/PlayerCard";
 import {PlayerModel} from "./model/player.model";
 import SearchBar from "./components/SearchBar";
+import Pagination from "./components/Pagination";
 
 const allPlayers = [
   {
@@ -56,15 +57,20 @@ const allPlayers = [
 ]; // mock
 
 function App() {
+  const [ currentPage, setCurrentPage ] = useState(1);
+  const [ nbPages, setNbPages ] = useState(5);
   const [ players, setPlayers ] = useState<PlayerModel[]>(allPlayers)
   return (
-    <div className="flex flex-col w-full h-full">
+    <div className="flex flex-col w-full h-full py-10">
       <header className="p-10">
         <SearchBar />
       </header>
       <main className="flex flex-row flex-wrap w-full justify-center md:justify-start pl-0 md:pl-10 pt-10">
         { players.map(player => <PlayerCard key={player.pictureURl} player={player} />) }
       </main>
+      <footer className="flex flex-row justify-center">
+        <Pagination currentPage={currentPage} nbPages={nbPages} setCurrentPage={setCurrentPage}  />
+      </footer>
     </div>
   );
 }
