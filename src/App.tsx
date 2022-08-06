@@ -18,6 +18,9 @@ function App() {
         >
           Learn React
         </a>
+        <div className="text-3xl">
+          Tailwind div
+        </div>
       </header>
     </div>
   );
